@@ -20,7 +20,9 @@ int main() {
     // Change file paths before you run on your computer
     int num_of_columns;
     cout << "Enter # of columns for interleaver: "; cin >> num_of_columns;
-    string cipher_text = interleave_wbc(plaintext, num_of_columns);
+    //string cipher_text = interleave_wbc(plaintext, num_of_columns); // Uncomment for write by columns
+    string cipher_text = interleave_wbr(plaintext, num_of_columns); // Uncomment for write by rows
+    cout << cipher_text << endl;
 
     if (!write_to_file("/Users/haydenroszell/Documents/School/College/ERAU/Sophomore/sem2/CS303/projects/project1/output.txt", cipher_text))
         return 1;
@@ -62,11 +64,9 @@ string interleave_wbc(const string& plain_text, const int num_of_columns) {
         }
     }
     string cipher_text;
-    cout << plain_text << endl << matrix << endl;
     for (int row = 0; row < num_of_rows; row++) {
         for (int column = 0; column < num_of_columns; column++) {
             cipher_text.append(1, matrix[row*num_of_columns+column]);
-            cout << matrix[row*num_of_columns+column];
         }
     }
 
@@ -88,11 +88,9 @@ string interleave_wbr(const string& plain_text, const int num_of_columns) {
     }
 
     string cipher_text;
-    cout << plain_text << endl << matrix << endl;
     for (int column = 0; column < num_of_columns; column++) {
         for (int row = 0; row < num_of_rows; row++) {
             cipher_text.append(1, matrix[row*num_of_columns+column]);
-            cout << matrix[row*num_of_columns+column];
         }
     }
 
